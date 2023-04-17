@@ -47,7 +47,9 @@ public class AdminController {
 
     @GetMapping("/{id}/edit")
     public String editUser(@PathVariable("id") long id, Model model) {
-        model.addAttribute("user", userRepository.findById(id).orElse(null));
+        User user = userRepository.findById(id).orElse(null);
+        user.setPassword("add new password");
+        model.addAttribute("user", user);
         model.addAttribute("allRoles", roleRepository.findAll());
         return "admin/edit";
     }

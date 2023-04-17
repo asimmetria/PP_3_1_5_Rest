@@ -48,9 +48,9 @@
 
 </table>
 <br>
-<input type="button" value="Add" onclick="window.location.href='/admin/addnewuser'"/>
+<input type="button" value="Add another one!" onclick="window.location.href='/admin/addnewuser'"/>
 <br><br>
-<a th:href="@{/logout}"><input type="button"  value="Logout"></a>
+<div th:insert="footer :: logout"></div>
 
 
 </body>

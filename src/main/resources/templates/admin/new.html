@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User Info</title>
+    <title>Add new user!</title>
 </head>
 <body>
 <br>
 <form th:action="@{saveuser}" th:object="${user}" method="post">
 
-    Name<input type="text" th:field="*{username}"/>
+    <label for="username">Enter name: </label><input type="text" th:field="*{username}" id="username"/>
     <br><br>
-    Password<input type="password" th:field="*{password}"/>
+    <label for="password">Enter password: </label><input type="password" th:field="*{password}"  id="password"/>
     <br><br>
-    Email<input type="email" th:field="*{email}"/>
+    <label for="email">Enter email: </label><input type="email" th:field="*{email}"  id="email"/>
     <br><br>
     <p>
         Roles:
@@ -23,8 +23,10 @@
                th:field="*{roles}"
         />
     </p>
-    <input type="submit" value="OK">
+    <input type="submit" value="Create">
 
 </form>
+<br /><br />
+<div th:insert="footer :: logout"></div>
 </body>
 </html>

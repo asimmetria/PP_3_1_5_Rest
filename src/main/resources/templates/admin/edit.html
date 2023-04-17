@@ -8,11 +8,11 @@
 <br>
 <form th:action="@{/admin/edit/{id}(id=${user.user_id})}" th:object="${user}" th:method="patch">
 
-     Enter name <input type="text" th:field="*{username}"/>
+    <label for="username">Enter name: </label><input type="text" th:field="*{username}" id="username"/>
     <br><br>
-    Enter password <input type="text" th:field="*{password}"/>
+    <label for="password">Enter password: </label> <input type="text" th:field="*{password}" id="password"/>
     <br><br>
-    Enter email <input type="text" th:field="*{email}"/>
+    <label for="email">Enter email: </label><input type="text" th:field="*{email}" id="email"/>
     <br><br>
     <p>
         Roles:
@@ -26,9 +26,10 @@
     </p>
 
     <input type="submit" value="Update">
-    <br><br>
-    <a th:href="@{/logout}"><input type="button"  value="Logout"></a>
 
 </form>
+<br><br>
+
+<div th:insert="footer :: logout"></div>
 </body>
 </html>
