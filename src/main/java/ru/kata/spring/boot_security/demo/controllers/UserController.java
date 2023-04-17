@@ -11,16 +11,16 @@ import java.security.Principal;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    UserRepository userRepository;
+    UserRepository userService;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserRepository userService) {
+        this.userService = userService;
     }
 
     @GetMapping
     public String showUser(Model model, Principal principal) {
-        model.addAttribute("user", userRepository.findByUsername(principal.getName()));
+        model.addAttribute("user", userService.findByUsername(principal.getName()));
         return "user";
     }
 

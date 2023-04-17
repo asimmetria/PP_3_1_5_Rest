@@ -21,6 +21,7 @@ public class User implements UserDetails {
     @Column(name = "email")
     private String email;
 
+
     @ManyToMany
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
