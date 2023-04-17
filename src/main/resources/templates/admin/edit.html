@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info</title>
+</head>
+<body>
+<br>
+<form th:action="@{/admin/edit/{id}(id=${user.user_id})}" th:object="${user}" th:method="patch">
+
+     Enter name <input type="text" th:field="*{username}"/>
+    <br><br>
+    Enter password <input type="text" th:field="*{password}"/>
+    <br><br>
+    Enter email <input type="text" th:field="*{email}"/>
+    <br><br>
+    <p>
+        Roles:
+        <input type="checkbox" name="roles"
+               th:each="role : ${allRoles}"
+               th:text="${role.name}"
+               th:value="${role.id}"
+               th:checked="${user.roles.contains(role)}"
+               th:field="*{roles}"
+        />
+    </p>
+
+    <input type="submit" value="Update">
+    <br><br>
+    <a th:href="@{/logout}"><input type="button"  value="Logout"></a>
+
+</form>
+</body>
+</html>

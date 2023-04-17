@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Roles</th>
+
+        <th></th>
+        <th></th>
+    </tr>
+    <th:block th:each="user : ${allUsers}">
+        <tr>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.email}"></td>
+
+            <td>
+                <th:block th:each="role : ${user.roles}">
+                    <span th:text="${role.name}"></span>
+                </th:block>
+            </td>
+
+            <td>
+                <form method="get" th:action="@{/admin/{id}/edit(id=${user.getUser_id()})}">
+                    <input type="submit" value="Edit"/>
+                </form>
+            </td>
+
+            <td>
+                <form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getUser_id()})}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+
+        </tr>
+    </th:block>
+
+
+</table>
+<br>
+<input type="button" value="Add" onclick="window.location.href='/admin/addnewuser'"/>
+<br><br>
+<a th:href="@{/logout}"><input type="button"  value="Logout"></a>
+
+
+</body>
+
+</html>
