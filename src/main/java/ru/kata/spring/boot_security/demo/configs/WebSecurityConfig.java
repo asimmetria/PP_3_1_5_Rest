@@ -33,16 +33,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
                 .and()
-                .formLogin().successHandler(successUserHandler)
+                .formLogin().loginPage("/login").successHandler(successUserHandler)
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
     }
-
-
-
-
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
