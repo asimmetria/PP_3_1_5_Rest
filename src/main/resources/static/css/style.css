@@ -1,0 +1,80 @@
+label {
+    font-weight: bold;
+}
+
+.modal-body form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin-top: 30px;
+}
+
+td {
+    vertical-align: unset !important;
+}
+
+[required] {
+    background-color: #feffc3;
+}
+
+#addNewUser .form-group {
+    width: 30%;
+}
+
+#addNewUserFooter {
+    text-align: center;
+    display: block;
+    border: none;
+}
+
+h2 {
+    background-color: #e3e7e9;
+    padding: 10px 0px 10px 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+body {
+    background-color: #e3e7e9;
+}
+
+.card-block {
+    margin: 0px 30px 0px 30px;
+}
+
+.card {
+    border-bottom: 1px solid #cfcfcf;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #cfcfcf;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.custom-select {
+    height: 3em!important;
+}
+
+row {
+    padding-right: 30px;
+}
+
+.menu {
+    background-color: white;
+    padding-right: 0px;
+}
