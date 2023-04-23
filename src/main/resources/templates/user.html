@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+<html lang="en" class="h-100"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>About user</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link media="all" rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link media="all" rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
 </head>
 <body>
 <div th:insert="header :: logout"></div>
@@ -15,7 +17,9 @@
 <div class="row">
     <div class="col-3 menu">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link" th:if="${user.getAuthorities().contains('ADMIN')}" th:href="@{/admin}" role="tab" aria-selected="false">Admin</a>
+
+                <a class="nav-link" th:if="${isAdmin}" th:href="@{/admin}"  role="tab" aria-selected="false">Admin</a>
+
             <a class="nav-link active" href="/user" role="tab" aria-selected="true">User</a>
         </div>
     </div>
