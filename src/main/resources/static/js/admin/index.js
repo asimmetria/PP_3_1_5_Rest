@@ -18,7 +18,6 @@ async function  getAdminPage() {
     let page = await fetch(url)
     if(page.ok) {
         let allUsers = await page.json()
-
         loadTableData(allUsers)
     } else {
         alert('Error, ${page.status}')
