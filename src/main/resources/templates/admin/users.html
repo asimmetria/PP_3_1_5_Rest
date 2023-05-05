@@ -216,32 +216,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="user : ${allUsers}">
-                                    <td th:text="${user.user_id}"></td>
-                                    <td th:text="${user.firstName}"></td>
-                                    <td th:text="${user.lastName}"></td>
-                                    <td th:text="${user.age}"></td>
-                                    <td th:text="${user.email}"></td>
-                                    <td>
-                                        <th:block th:each="role : ${user.roles}">
-                                            <span th:text="${role.name.replaceAll('ROLE_', '')}"></span>
-                                        </th:block>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-success"
-                                                data-toggle="modal"
-                                                th:data-target="'#EditUser' + ${user.user_id}" data-user="${user}">
-                                            Edit
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-danger" data-toggle="modal"
-                                                th:data-target="'#DeleteUser' + ${user.user_id}"
-                                                data-user="${user}">
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>

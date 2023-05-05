@@ -7,7 +7,7 @@ currentUser.then(user => {
         let roles = ''
         user.roles.forEach(role => {
             roles += ' '
-            roles += role.name
+            roles += role.name.replaceAll('ROLE_', ' ')
         })
     document.getElementById('navbar-email').innerHTML = user.email
     document.getElementById('navbar-roles').innerHTML = roles
@@ -18,6 +18,7 @@ async function  getAdminPage() {
     let page = await fetch(url)
     if(page.ok) {
         let allUsers = await page.json()
+
         loadTableData(allUsers)
     } else {
         alert('Error, ${page.status}')
@@ -58,6 +59,7 @@ function loadTableData(allUsers) {
             </tr>      
             `
     }
+    adminTable.innerHTML = dataHtml
 }
 
 getAdminPage()
