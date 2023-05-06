@@ -1,6 +1,6 @@
-const url = '/api/admin'
+const adminUrl = '/api/admin'
 
-const currentUser = fetch(url + '/auth')
+const currentUser = fetch(adminUrl + '/auth')
     .then(response => response.json())
 
 currentUser.then(user => {
@@ -15,7 +15,7 @@ currentUser.then(user => {
 )
 
 async function  getAdminPage() {
-    let page = await fetch(url)
+    let page = await fetch(adminUrl)
     if(page.ok) {
         let allUsers = await page.json()
         loadTableData(allUsers)
@@ -24,41 +24,20 @@ async function  getAdminPage() {
     }
 }
 
-function loadTableData(allUsers) {
-    const adminTable = document.getElementById('admin-table');
-    let dataHtml = ''
-    for (let user of allUsers) {
-        let roles = []
-        for (let role of user.roles) {
-            roles.push(' ' + role.name.toString().replaceAll('ROLE_', ''))
-        }
-        dataHtml +=
-            `
-            <tr>
-                <td>${user.user_id}</td>
-                <td>${user.firstName}</td>
-                <td>${user.lastName}</td>
-                <td>${user.age}</td>
-                <td>${user.email}</td>
-                <td>${roles}</td>
-                <td>
-                    <button type="button" class="btn btn-primary btn-success"
-                                                data-toggle="modal"
-                                                data-target="#EditUser"
-                                                onclick="loadDataforEditModal(${user.user_id})">Edit
-                    </button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary btn-danger"
-                                                data-toggle="modal"
-                                                data-target="#DeleteUser"
-                                                onclick="loadDataforDeleteModal(${user.user_id})">Delete
-                    </button>
-                </td>
-            </tr>      
-            `
-    }
-    adminTable.innerHTML = dataHtml
-}
 
 getAdminPage()
+
+const editUser = document.querySelector('#editUser');
+$(document).on('show.bs.modal','#editUser', fillModal(editUser, 'edit'))
+
+const deleteUser = document.querySelector('#deleteUser');
+$(document).on('show.bs.modal','#deleteUser', fillModal(deleteUser, 'delete'))
+
+
+//
+// const editUser = document.querySelector('#editUser');
+// editUser.addEventListener('show.bs.modal',event => fillModal(event, editUser, 'edit'));
+// editUser.addEventListener('hide.bs.modal', () => {
+//     const inputPass = editUser.querySelector('#editPassword');
+//     inputPass.value = '';
+// })

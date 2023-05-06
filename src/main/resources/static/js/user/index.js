@@ -1,6 +1,6 @@
-const url = '/api/user'
+const userUrl = '/api/user'
 
-const currentUser = fetch(url)
+const currentUser = fetch(userUrl)
     .then(response => response.json())
 
 currentUser.then(user => {
@@ -17,7 +17,7 @@ currentUser.then(user => {
                     <td>${user.lastName}</td>
                     <td>${user.age}</td>
                     <td>${user.email}</td>
-                    <td>${roles}</td>   
+                    <td>${roles.toString().replaceAll(',','&nbsp;')}</td>   
             </tr>`
 
     }
