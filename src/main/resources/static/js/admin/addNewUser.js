@@ -70,13 +70,9 @@ function cleanCreateForm(){
     addNewUserForm.querySelectorAll('input').forEach(input => input.value = '');
     addNewUserForm.querySelectorAll('option').forEach(option => option.selected = false);
 
-    const newTab = document.getElementById('new-tab');
-    const allUsersTab = document.getElementById('allUsers-tab');
-    allUsersTab.classList.add('active');
-    newTab.classList.remove('active');
+    document.getElementById('new-tab').classList.remove('active')
+    document.getElementById('allUsers-tab').classList.add('active')
 
-    const allUsersContent = document.getElementById('allUsers');
-    const newContent = document.getElementById('new');
-    allUsersContent.classList.add('show', 'active');
-    newContent.classList.remove('show', 'active');
-}
+    document.getElementById('allUsers').classList.add('show', 'active')
+    document.getElementById('new').classList.remove('show', 'active')
+    }
