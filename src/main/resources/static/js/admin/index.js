@@ -9,14 +9,23 @@ currentUser.then(user => {
             roles += ' '
             roles += role.name.replaceAll('ROLE_', ' ')
         })
-    document.getElementById('navbar-email').innerHTML = user.email
-    document.getElementById('navbar-roles').innerHTML = roles
-}
+        document.getElementById('navbar-email').innerHTML = user.email
+        document.getElementById('navbar-roles').innerHTML = roles
+        document.getElementById('user-table').innerHTML =
+            `<tr>
+                    <td>${user.user_id}</td>
+                    <td>${user.firstName}</td>
+                    <td>${user.lastName}</td>
+                    <td>${user.age}</td>
+                    <td>${user.email}</td>
+                    <td>${roles.toString().replaceAll(',', '&nbsp;')}</td>   
+            </tr>`
+    }
 )
 
-async function  getAdminPage() {
+async function getAdminPage() {
     let page = await fetch(adminUrl)
-    if(page.ok) {
+    if (page.ok) {
         let allUsers = await page.json()
         loadTableData(allUsers)
     } else {
@@ -28,16 +37,9 @@ async function  getAdminPage() {
 getAdminPage()
 
 const editUser = document.querySelector('#editUser');
-$(document).on('show.bs.modal','#editUser', fillModal(editUser, 'edit'))
+$(document).on('show.bs.modal', '#editUser', fillModal(editUser, 'edit'))
 
 const deleteUser = document.querySelector('#deleteUser');
-$(document).on('show.bs.modal','#deleteUser', fillModal(deleteUser, 'delete'))
+$(document).on('show.bs.modal', '#deleteUser', fillModal(deleteUser, 'delete'))
 
 
-//
-// const editUser = document.querySelector('#editUser');
-// editUser.addEventListener('show.bs.modal',event => fillModal(event, editUser, 'edit'));
-// editUser.addEventListener('hide.bs.modal', () => {
-//     const inputPass = editUser.querySelector('#editPassword');
-//     inputPass.value = '';
-// })
