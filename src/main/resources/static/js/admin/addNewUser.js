@@ -53,12 +53,6 @@ addNewUserForm.addEventListener('submit', event => {
     }
     user.roles = userRoles
 
-    console.log(user.firstName)
-    console.log(user.lastName)
-    console.log(user.password)
-    console.log(user.age)
-    console.log(user.email)
-    console.log(userRoles)
     createUserRequest(user).then(response => {
         if (!response.ok) {
             throw new Error(`Сервер не смог обработать запрос: ${response.status}`)
@@ -75,4 +69,14 @@ addNewUserForm.addEventListener('submit', event => {
 function cleanCreateForm(){
     addNewUserForm.querySelectorAll('input').forEach(input => input.value = '');
     addNewUserForm.querySelectorAll('option').forEach(option => option.selected = false);
+
+    const newTab = document.getElementById('new-tab');
+    const allUsersTab = document.getElementById('allUsers-tab');
+    allUsersTab.classList.add('active');
+    newTab.classList.remove('active');
+
+    const allUsersContent = document.getElementById('allUsers');
+    const newContent = document.getElementById('new');
+    allUsersContent.classList.add('show', 'active');
+    newContent.classList.remove('show', 'active');
 }
