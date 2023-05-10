@@ -10,6 +10,17 @@ function createUserRequest(user) {
     })
 }
 
+function cleanCreateFormAndShowTable() {
+    addNewUserForm.querySelectorAll('input').forEach(input => input.value = '');
+    addNewUserForm.querySelectorAll('option').forEach(option => option.selected = false);
+
+    document.getElementById('new-tab').classList.remove('active')
+    document.getElementById('allUsers-tab').classList.add('active')
+
+    document.getElementById('allUsers').classList.add('show', 'active')
+    document.getElementById('new').classList.remove('show', 'active')
+}
+
 
 document.querySelector('#new-tab').addEventListener('click', () => {
         const listOfRoles = addNewUserForm.querySelector('#newRoles')
@@ -61,18 +72,6 @@ addNewUserForm.addEventListener('submit', event => {
     })
         .then(data => loadTableData(data))
         .catch(err => console.error(err))
-        .then(() => cleanCreateForm())
-
-
+        .then(() => cleanCreateFormAndShowTable())
 })
 
-function cleanCreateForm(){
-    addNewUserForm.querySelectorAll('input').forEach(input => input.value = '');
-    addNewUserForm.querySelectorAll('option').forEach(option => option.selected = false);
-
-    document.getElementById('new-tab').classList.remove('active')
-    document.getElementById('allUsers-tab').classList.add('active')
-
-    document.getElementById('allUsers').classList.add('show', 'active')
-    document.getElementById('new').classList.remove('show', 'active')
-    }
