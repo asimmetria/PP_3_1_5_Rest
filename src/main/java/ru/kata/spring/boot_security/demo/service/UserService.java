@@ -13,11 +13,9 @@ import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.models.User;
 import ru.kata.spring.boot_security.demo.repository.UserRepository;
 
-
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 @Service
 public class UserService implements UserDetailsService {
@@ -43,7 +41,6 @@ public class UserService implements UserDetailsService {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
-
     public List<User> findAll() {
         return userRepository.findAll();
     }
@@ -55,6 +52,7 @@ public class UserService implements UserDetailsService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
     @Transactional
     public void deleteById(long id) {
         userRepository.deleteById(id);

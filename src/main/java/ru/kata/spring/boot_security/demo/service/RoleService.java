@@ -20,7 +20,4 @@ public class RoleService {
         return roleRepository.findAll();
     }
 
-
-
-
 }
