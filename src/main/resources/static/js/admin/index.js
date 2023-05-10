@@ -1,14 +1,22 @@
-const adminUrl = '/api/users'
+const adminUrl = '/api/users';
 
-async function getAdminPage() {
-    let page = await fetch(adminUrl)
-    if (page.ok) {
-        let allUsers = await page.json()
-        loadTableData(allUsers)
-    } else {
-        alert('Error, ${page.status}')
-    }
+function getAdminPage() {
+    fetch(adminUrl)
+        .then((response) => {
+            if (response.ok) {
+                return response.json()
+            } else {
+                throw new Error(`Error, ${response.status}`)
+            }
+        })
+        .then((allUsers) => {
+            loadTableData(allUsers)
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
 }
+
 
 getAdminPage()
 
