@@ -58,6 +58,7 @@ public class APIController {
     }
 
     @GetMapping("/roles")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<Role>> showAllRoles() {
         return new ResponseEntity<>(roleService.findAll(), HttpStatus.OK);
     }
