@@ -17,7 +17,6 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SuccessUserHandler successUserHandler;
     private final UserService userService;
-
     private final PasswordEncoder passwordEncoder;
 
     @Autowired

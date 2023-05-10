@@ -62,7 +62,7 @@ public class UserService implements UserDetailsService {
     @Transactional
     public void save(User user) {
         if (user.getPassword().isEmpty()) {
-            user.setPassword(userRepository.findById(user.getUser_id()).get().getPassword());
+            user.setPassword(findById(user.getUser_id()).getPassword());
         } else {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
