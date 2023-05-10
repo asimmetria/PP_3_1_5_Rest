@@ -1,11 +1,11 @@
 function fillModal(modal, actionPrefix) {
     return function(event) {
-        const trUser = event.relatedTarget.parentElement.parentElement;
-        modal.querySelector(`#${actionPrefix}User_id`).value = trUser.cells[0].textContent;
-        modal.querySelector(`#${actionPrefix}FirstName`).value = trUser.cells[1].textContent;
-        modal.querySelector(`#${actionPrefix}LastName`).value = trUser.cells[2].textContent;
-        modal.querySelector(`#${actionPrefix}Age`).value = trUser.cells[3].textContent;
-        modal.querySelector(`#${actionPrefix}Email`).value = trUser.cells[4].textContent;
+        const trUser = event.relatedTarget.parentElement.parentElement
+        modal.querySelector(`#${actionPrefix}User_id`).value = trUser.cells[0].textContent
+        modal.querySelector(`#${actionPrefix}FirstName`).value = trUser.cells[1].textContent
+        modal.querySelector(`#${actionPrefix}LastName`).value = trUser.cells[2].textContent
+        modal.querySelector(`#${actionPrefix}Age`).value = trUser.cells[3].textContent
+        modal.querySelector(`#${actionPrefix}Email`).value = trUser.cells[4].textContent
 
         const listOfRoles = modal.querySelector(`#${actionPrefix}Roles`)
 

@@ -1,15 +1,14 @@
 const deleteForm = document.querySelector('#deleteForm')
 
 function deleteUserRequest(id) {
-
     return fetch(adminUrl + '/' + id, {
         method: 'DELETE'
-    });
+    })
 }
 
 deleteForm.addEventListener('submit', event => {
     event.preventDefault()
-    $('#deleteUser').modal('hide');
+    $('#deleteUser').modal('hide')
     const id = deleteForm.querySelector('#deleteUser_id').value
     deleteUserRequest(id)
         .then(response => {

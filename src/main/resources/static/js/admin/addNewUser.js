@@ -11,8 +11,8 @@ function createUserRequest(user) {
 }
 
 function cleanCreateFormAndShowTable() {
-    addNewUserForm.querySelectorAll('input').forEach(input => input.value = '');
-    addNewUserForm.querySelectorAll('option').forEach(option => option.selected = false);
+    addNewUserForm.querySelectorAll('input').forEach(input => input.value = '')
+    addNewUserForm.querySelectorAll('option').forEach(option => option.selected = false)
 
     document.getElementById('new-tab').classList.remove('active')
     document.getElementById('allUsers-tab').classList.add('active')
